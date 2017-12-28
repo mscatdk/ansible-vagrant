@@ -1,0 +1,17 @@
+;
+; BIND reverse data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     server01.msc.local. admin.msc.local. (
+                              8         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+        IN      NS      server01.msc.local.
+        IN      NS      server02.msc.local.
+
+; PTR Records
+10      IN      PTR     server01.msc.local.
+11      IN      PTR     server02.msc.local.

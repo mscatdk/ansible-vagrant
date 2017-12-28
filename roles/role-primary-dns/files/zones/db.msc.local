@@ -1,0 +1,17 @@
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     server01.msc.local. admin.msc.local. (
+                              9         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+; name server - NS records
+        IN      NS      server01.msc.local.
+
+; name servers - A records
+server01.msc.local.     IN      A       10.0.1.10
+server02.msc.local.     IN      A       10.0.1.11

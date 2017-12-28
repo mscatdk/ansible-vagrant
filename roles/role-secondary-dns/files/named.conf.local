@@ -1,0 +1,20 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+// Ansible managed configuration
+zone "msc.local" {
+    type slave;
+    file "zones/db.msc.local";
+    masters { 10.0.1.10; };
+};
+
+zone "1.0.10.in-addr.arpa" {
+    type slave;
+    file "zones/db.10.0.1";
+    masters { 10.0.1.10; };
+};

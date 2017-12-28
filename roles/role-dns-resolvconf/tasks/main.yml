@@ -1,0 +1,13 @@
+# Update DNS configuration to use e.g. a local DNS server
+---
+- name: Update resolvconf head file
+  template: 
+    src: head.j2 
+    dest: /etc/resolvconf/resolv.conf.d/head
+    owner: root
+    group: root
+    mode: 0644
+  
+- name: Update resolvconf
+  command: resolvconf -u
+    

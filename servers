@@ -1,0 +1,5 @@
+[primary-dns]
+10.0.1.10
+
+[secondary-dns]
+10.0.1.11

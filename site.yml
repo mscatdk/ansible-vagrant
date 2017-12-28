@@ -1,0 +1,33 @@
+---
+- hosts: primary-dns
+  remote_user: ubuntu
+  tasks:
+  - name: Install primary DNS
+    include_role:
+      name: role-primary-dns
+    become: true
+    become_method: sudo
+    become_user: root    
+
+- hosts: secondary-dns
+  remote_user: ubuntu
+  tasks:
+  - name: Install secondary DNS
+    include_role:
+      name: role-secondary-dns
+    become: true
+    become_method: sudo
+    become_user: root
+    
+- hosts: all
+  remote_user: ubuntu
+  tasks:  
+  - name: Update resolvconf to use local DNS server
+    include_role:
+      name: role-dns-resolvconf
+    vars:
+      dns_nameservers: ['10.0.1.10', '10.0.1.11']
+      dns_searchs: ['msc.local']
+    become: true
+    become_method: sudo
+    become_user: root
